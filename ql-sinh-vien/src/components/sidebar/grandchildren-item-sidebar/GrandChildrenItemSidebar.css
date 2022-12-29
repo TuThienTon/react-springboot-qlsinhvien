@@ -1,0 +1,32 @@
+.wrapper-children-item-sidebar {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+    margin: 0px 1.3rem;
+  }
+  .parrent-wrapper-item-sidebar-active .wrapper-children-item-sidebar {
+    max-height: 500px;
+  }
+  
+  .wrapper-children-item-sidebar-active {
+    max-height: 500px;
+  }
+  
+  .item-children-item-sidebar {
+    border-left: 5px solid #EFF0F6;
+    color: #475985;
+    
+    font-weight: 500;
+    cursor: pointer;
+  }
+  
+  .item-children-item-sidebar:hover {
+    border-left: 5px solid var(--color-common);
+    color: white;
+    background-color: #EFEBFF;
+  }
+  
+  .item-children-item-sidebar-active {
+    border-left: 5px solid var(--color-common);
+    color: var(--color-common);
+  }

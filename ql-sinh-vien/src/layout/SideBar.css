@@ -1,0 +1,8 @@
+
+.wrapper-sidebar {
+  width: 310px;
+  height: calc(100vh - 72px) ;
+  background-color: #fff;
+  position: fixed;
+  overflow: auto;
+}
