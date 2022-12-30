@@ -15,7 +15,6 @@ const ListStudent = () => {
         <div>
             <SearchStudent />
             <ResultStudent />
-            
         </div>
     );
 };

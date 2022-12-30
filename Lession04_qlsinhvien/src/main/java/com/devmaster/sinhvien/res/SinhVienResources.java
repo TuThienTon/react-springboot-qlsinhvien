@@ -76,5 +76,8 @@ public class SinhVienResources {
         return sinhVienService.getSinhVienXuatSac();
     }
 
-
+    @GetMapping("findSvByKhoa")
+    List<SinhVienDTO> findSinhVienByKhoa(@RequestParam("maKh") String maKh, @RequestParam("name") String name){
+        return sinhVienService.findSinhVienByKhoa(maKh, name);
+    }
 }

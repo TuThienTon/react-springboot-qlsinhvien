@@ -87,6 +87,11 @@ public class SinhVienService {
         SinhVien entity = sinhVienRespository.getById(id);
         SinhVienDTO dtos = sinhVienMapper.toDo(entity);
         return dtos;
+    }
 
+    public List<SinhVienDTO> findSinhVienByKhoa(String maKh, String name) {
+        List<SinhVien> entity = sinhVienRespository.findSinhVienByKhoa(maKh, name);
+        List<SinhVienDTO> dto = sinhVienMapper.toDo(entity);
+        return dto;
     }
 }

@@ -53,5 +53,10 @@ public interface SinhVienRespository extends JpaRepository<SinhVien, String> {
     List<SinhVien> findSinhVien(@Param("name") String name);
 
     @Query("select  s from  SinhVien s" +" where concat(s.hoSv,' ',s.tenSv) like concat('%', :name, '%') ")
-    List<SinhVien> findAllByTenSv(String name);
+    List<SinhVien> findAllByTenSv(@Param("name") String name);
+
+
+    @Query(value = " select s from SinhVien s where concat(s.hoSv,' ',s.tenSv) like concat('%', :name, '%') " +
+            "and s.maKh.id like concat('%', :maKh, '%')")
+    List<SinhVien> findSinhVienByKhoa(@Param("maKh") String maKh, @Param("name") String name);
 }
