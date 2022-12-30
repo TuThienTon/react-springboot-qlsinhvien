@@ -66,9 +66,9 @@ public class SinhVienResources {
     }
 
     //Số môn mà sinh viên đó tham gia
-    @GetMapping("/tongket/{maSv}")
-    List<SinhVienInfo> getSoMonBySinhVien(@PathVariable("maSv") String maSv){
-        return sinhVienService.getSoMonBySinhVien(maSv);
+    @GetMapping("/tongket/{maSv}/{diemTB}")
+    List<SinhVienInfo> getSoMonBySinhVien(@PathVariable("maSv") String maSv, @PathVariable("diemTB") Integer diemTB){
+        return sinhVienService.getSoMonBySinhVien(maSv, diemTB);
     }
     // Hiển thị sinh viên xuất sắc có diemTB các môn >= 8
     @GetMapping("/tongket/sv-vip")

@@ -38,8 +38,8 @@ public interface SinhVienRespository extends JpaRepository<SinhVien, String> {
             " count(kq.ma_sv) as soMon, avg(kq.diem) as diemTB " +
             " from qlsinhvien.ket_qua kq " +
             " left join qlsinhvien.sinh_vien sv on kq.ma_sv = sv.ma_sv " +
-            " where kq.ma_sv = :maSv ", nativeQuery = true)
-    List<SinhVienInfo> getSoMonBySinhVien(@Param("maSv") String maSv);
+            " where kq.ma_sv = :maSv group by maSv having diemTB >= :diemTB ", nativeQuery = true)
+    List<SinhVienInfo> getSoMonBySinhVien(@Param("maSv") String maSv, @Param("diemTB") Integer diemTB);
 
     //Hiển thị sinh vien xuất sắc diemTB >= 8
     @Query(value = " select sv.ma_sv maSv, concat(sv.ho_sv, '' , sv.ten_sv) hoTen, \n" +

@@ -74,8 +74,8 @@ public class SinhVienService {
         List<SinhVienInfo> sinhVienInfos = sinhVienRespository.getDiemTongKet();
         return sinhVienInfos;
     }
-    public List<SinhVienInfo> getSoMonBySinhVien(String maSv) {
-        List<SinhVienInfo> sinhVienInfos = sinhVienRespository.getSoMonBySinhVien(maSv);
+    public List<SinhVienInfo> getSoMonBySinhVien(String maSv, Integer diemTB) {
+        List<SinhVienInfo> sinhVienInfos = sinhVienRespository.getSoMonBySinhVien(maSv, diemTB);
         return sinhVienInfos;
     }
     public List<SinhVienInfo> getSinhVienXuatSac(){
