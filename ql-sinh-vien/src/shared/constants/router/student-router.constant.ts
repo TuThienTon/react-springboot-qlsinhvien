@@ -13,6 +13,10 @@ export const STUDENT_ROUTER = {
     updateUser: {
       path: '/students/:id',
       buildPath: (id: any) => `/students/${id}`,
-    }
+    },
+    listSvXuatSac: {
+      path: '/students/sinhvien-xuatsac',
+      roles: [],
+    },
   }
 };
