@@ -32,8 +32,8 @@ public class KetQuaResources {
     }
 
     @GetMapping("/filter")
-    List<KetQuaDTO> findByName(@RequestParam("name") String name){
-        List<KetQuaDTO> dto = ketQuaService.findByName(name);
+    List<KetQuaDTO> findByName(@RequestParam("masv") String masv, @RequestParam("mamh") String mamh){
+        List<KetQuaDTO> dto = ketQuaService.findByName(masv, mamh);
         return dto;
     }
     @GetMapping("/{id}")

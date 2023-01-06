@@ -38,7 +38,8 @@ const ResultKetqua = () => {
             toast.success("Xóa thành công");
             dispatch(
                 searchKetquaEntitiesAsync({
-                    name: "",
+                    masv: "",
+                    mamh: "",
                 })
             );
         } else toast.error("Xóa không thành công");

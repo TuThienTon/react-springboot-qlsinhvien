@@ -8,7 +8,8 @@ const ListKetqua = () => {
     const dispatch = useAppDispatch();
     useEffect(() => {
         dispatch(searchKetquaEntitiesAsync({
-            name: ''
+            masv: '',
+            mamh: ''
         }));
     }, [])
     return (

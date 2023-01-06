@@ -4,28 +4,49 @@ import { Form, Formik, FormikHelpers, FormikValues } from "formik";
 import { Button, Grid } from '@mui/material';
 import TextFieldContainer from '../../../components/common/form/TextFieldContainer';
 import { useAppDispatch } from '../../../app/hooks';
-
+import { useEffect, useState } from "react";
 import * as Yup from 'yup';
 import { searchSvxsEntitiesAsync } from '../redux/thongke.reducer';
+import { filterKhoa } from '../../../shared/api/khoa.api';
 const SearchTK = () => {
     const dispatch = useAppDispatch();
     const initialValues = {
-        keySearch: ''
+        searchKey: ''
     }
     const validationSchema = Yup.object().shape({
 
     })
     const submitSearch = (values: any, formik: any) => {
         dispatch(searchSvxsEntitiesAsync({
-            name: values.keySearch
+            makh: values.searchKey
         }));
     }
     const handleCancel = (formik: any) => (e: any) => {
         formik.resetForm();
         dispatch(searchSvxsEntitiesAsync({
-            name: ''
+            makh: ''
         }))
     };
+    const itemKhoa = {
+        label: "Chọn Khoa",
+        value: "",
+    };
+    const [khoa, setKhoa] = useState({
+        label: "",
+        value: "",
+    });
+    const [dataKhoa, setDataKhoa] = useState([itemKhoa]);
+    useEffect(() => {
+        
+        filterKhoa({name})
+            .then((res) => {
+                return res.data.map((item: any) => ({ label: item.tenKh, value: item.id }));
+            })
+
+            .then((data) => {
+                setDataKhoa([itemKhoa, ...data]);
+            });
+    }, []);
     return (
         <SSPaper>
             <Formik initialValues={initialValues} onSubmit={submitSearch} validationSchema={validationSchema}>
@@ -36,13 +57,15 @@ const SearchTK = () => {
                                 rowSpacing={2}
                                 columnSpacing={{ xs: 2, sm: 2, md: 3 }}>
                                 <Grid item sm={12}>
-                                    <TextFieldContainer
-                                        variant="input"
-                                        type="text"
-                                        label="Tên sinh viên"
-                                        name="keySearch"
-                                        placeholder="Nhập tên sinh viên"
-                                    />
+                                <TextFieldContainer
+                                    variant="select"
+                                    type="text"
+                                    label="Khoa"
+                                    name="searchKey"
+                                    values={khoa}
+                                    options={dataKhoa}
+                                    isRequired
+                                />
                                 </Grid>
                                 <Grid item sm={6} style={{ textAlign: "right" }}>
                                     <Button

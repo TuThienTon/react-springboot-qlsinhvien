@@ -8,7 +8,7 @@ const ListSvXuatSac = () => {
   const dispatch = useAppDispatch();
     useEffect(() => {
         dispatch(searchSvxsEntitiesAsync({
-            name: ''
+            makh: ''
         }));
     }, [])
   return (

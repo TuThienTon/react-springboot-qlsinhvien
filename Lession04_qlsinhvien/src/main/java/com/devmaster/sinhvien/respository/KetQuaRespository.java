@@ -11,8 +11,10 @@ import java.util.Optional;
 
 @Repository
 public interface KetQuaRespository extends JpaRepository<KetQua, String> {
-    @Query(value = "select kq from KetQua kq where kq.ma_sv like concat('%',:name,'%') ")
-    List<KetQua> findByName(@Param("name") String name);
+
+    @Query(value = " select * from qlsinhvien.ket_qua kq where  kq.ma_sv like concat('%', :masv,'%') " +
+            "and  kq.ma_mh like  concat('%', :mamh, '%')", nativeQuery = true)
+    List<KetQua> findByName(@Param("masv") String masv, @Param("mamh") String mamh);
 
 
     Optional<KetQua> findById(Integer id);

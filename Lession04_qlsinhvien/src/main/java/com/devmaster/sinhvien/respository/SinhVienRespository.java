@@ -46,7 +46,7 @@ public interface SinhVienRespository extends JpaRepository<SinhVien, String> {
             " count(kq.ma_sv) as soMon, avg(kq.diem) as diemTB \n" +
             " from qlsinhvien.ket_qua kq \n" +
             " left join qlsinhvien.sinh_vien sv on kq.ma_sv = sv.ma_sv\n" +
-            " group by maSv  having diemTB >= 8 and maKh like concat('%',:makh,'%')", nativeQuery = true)
+            " group by maSv  having diemTB >= 8 and maKh like concat('',:makh,'')", nativeQuery = true)
     List<SinhVienInfo> getSinhVienXuatSac(@Param("makh") String makh);
 
     @Query( value = " select sv from SinhVien sv where sv.tenSv like concat('%',:name,'%') " )

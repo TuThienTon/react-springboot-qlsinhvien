@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, isPending, isRejected } from "@reduxjs/toolkit";
-import { createStudent, deleteStudent, filterStudent, getByIdStudent, updateStudent } from "../../../shared/api/student.api";
+import {  getByIdStudent, updateStudent } from "../../../shared/api/student.api";
 import { filterSvxs, findSvByMh } from "../../../shared/api/thongke.api";
 
 const initialState: any = {

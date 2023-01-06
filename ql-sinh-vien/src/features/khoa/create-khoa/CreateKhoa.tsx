@@ -28,7 +28,7 @@ const CreateKhoa = () => {
         tenKh: "",
     };
     const validationSchema = Yup.object({
-        id: Yup.string().max(2, "Không được quá 3 kí tự").nullable().required(msgErrorRequired("Mã khoa")),
+        id: Yup.string().max(2, "Không được quá 2 kí tự").nullable().required(msgErrorRequired("Mã khoa")),
         tenKh: Yup.string().nullable().required(msgErrorRequired("Tên khoa")),
     });
     const handleSubmit = async (values: any, formik: any) => {

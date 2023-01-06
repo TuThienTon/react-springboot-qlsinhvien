@@ -27,8 +27,8 @@ public class KetQuaService {
     private final KhoaRespository khoaRespository;
     private final MonHocRespository monHocRespository;
 
-    public List<KetQuaDTO> findByName(String name) {
-        List<KetQua> ketQua = ketQuaRespository.findByName(name);
+    public List<KetQuaDTO> findByName(String masv, String mamh) {
+        List<KetQua> ketQua = ketQuaRespository.findByName(masv, mamh);
         List<KetQuaDTO> dto = ketQuaMapper.toDo(ketQua);
         return dto;
     }
