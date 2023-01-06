@@ -5,6 +5,7 @@ import { getSSHomeIcon } from "../../components/common/icons/SSHomeIcon";
 import { KHOA_ROUTER } from "./router/khoa-router.constant";
 import { MONHOC_ROUTER } from "./router/monhoc-router.constant";
 import { KETQUA_ROUTER } from "./router/ketqua-router.constant";
+import { THONGKE_ROUTER } from "./router/thongke-router.constant";
 
 const SideBarConst = [
     {
@@ -36,6 +37,7 @@ const SideBarConst = [
                 link: STUDENT_ROUTER.childrens.createUser.path,
                 roles: STUDENT_ROUTER.childrens.createUser.roles,
             },
+            
         ],
     },
     {
@@ -104,6 +106,28 @@ const SideBarConst = [
                 linkParentActive: [],
                 link: KETQUA_ROUTER.childrens.createKetqua.path,
                 roles: KETQUA_ROUTER.childrens.createKetqua.roles,
+            },
+        ],
+    },
+    {
+        name: "Thống kê",
+        icon: getSSHomeIcon,
+        link: "",
+        linkParentActive: [],
+        childrens: [
+            {
+                name: "Danh sách sinh viên xuất sắc",
+                icon: "icon2",
+                linkParentActive: [],
+                link: THONGKE_ROUTER.childrens.listSvXuatSac.path,
+                roles: THONGKE_ROUTER.childrens.listSvXuatSac.roles,
+            },
+            {
+                name: "Get Sv By Monhoc",
+                icon: "icon2",
+                linkParentActive: [],
+                link: THONGKE_ROUTER.childrens.listSvByMh.path,
+                roles: THONGKE_ROUTER.childrens.listSvByMh.roles,
             },
         ],
     },

@@ -61,7 +61,7 @@ public class MonHocService {
         MonHocInfo monHocInfo = monHocRespository.diemTB(id);
         return monHocInfo;
     }
-    public List<MonHocInfo> findSinhVienByMonHoc(Integer ma_mh){
+    public List<MonHocInfo> findSinhVienByMonHoc(String ma_mh){
         List<MonHocInfo> monHocInfos = monHocRespository.findSinhVienByMonHoc(ma_mh);
         return monHocInfos;
     }

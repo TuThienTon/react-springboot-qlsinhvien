@@ -30,7 +30,7 @@ public interface MonHocRespository extends JpaRepository<MonHoc, String> {
             " from qlsinhvien.ket_qua kq " +
             " join qlsinhvien.sinh_vien sv on sv.ma_sv = kq.ma_sv " +
             " join qlsinhvien.mon_hoc mh on mh.ma_mh = kq.ma_mh " +
-            " where mh.ma_mh = :ma_mh ", nativeQuery = true)
-    List<MonHocInfo> findSinhVienByMonHoc(@Param("ma_mh") Integer ma_mh);
+            " where mh.ma_mh like concat('%', :ma_mh, '%') ", nativeQuery = true)
+    List<MonHocInfo> findSinhVienByMonHoc(@Param("ma_mh") String ma_mh);
 
 }

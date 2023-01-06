@@ -42,12 +42,12 @@ public interface SinhVienRespository extends JpaRepository<SinhVien, String> {
     List<SinhVienInfo> getSoMonBySinhVien(@Param("maSv") String maSv, @Param("diemTB") Integer diemTB);
 
     //Hiển thị sinh vien xuất sắc diemTB >= 8
-    @Query(value = " select sv.ma_sv maSv, concat(sv.ho_sv, '' , sv.ten_sv) hoTen, \n" +
-            "count(kq.ma_sv) as soMon, avg(kq.diem) as diemTB \n" +
-            "from qlsinhvien.ket_qua kq \n" +
-            "\tleft join qlsinhvien.sinh_vien sv on kq.ma_sv = sv.ma_sv\n" +
-            "group by maSv  having diemTB >= 8 ", nativeQuery = true)
-    List<SinhVienInfo> getSinhVienXuatSac();
+    @Query(value = " select sv.ma_sv maSv, sv.ho_sv hoSv, sv.ten_sv tenSv, sv.ngay_sinh ngaySinh, sv.ma_kh maKh, " +
+            " count(kq.ma_sv) as soMon, avg(kq.diem) as diemTB \n" +
+            " from qlsinhvien.ket_qua kq \n" +
+            " left join qlsinhvien.sinh_vien sv on kq.ma_sv = sv.ma_sv\n" +
+            " group by maSv  having diemTB >= 8 and maKh like concat('%',:makh,'%')", nativeQuery = true)
+    List<SinhVienInfo> getSinhVienXuatSac(@Param("makh") String makh);
 
     @Query( value = " select sv from SinhVien sv where sv.tenSv like concat('%',:name,'%') " )
     List<SinhVien> findSinhVien(@Param("name") String name);

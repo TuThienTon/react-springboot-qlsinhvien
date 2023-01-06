@@ -66,8 +66,8 @@ public class MonHocResources {
 
     }
     //Các sinh viên theo học môn học where = ma_mh
-    @GetMapping("/sinhvien/{ma_mh}")
-    List<MonHocInfo> findSinhVienByMonHoc(@PathVariable("ma_mh") Integer ma_mh){
+    @GetMapping("/sinhvien")
+    List<MonHocInfo> findSinhVienByMonHoc(@RequestParam("ma_mh") String ma_mh){
         return monHocService.findSinhVienByMonHoc(ma_mh);
     }
 

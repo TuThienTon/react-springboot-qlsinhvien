@@ -4,6 +4,7 @@ import student from '../features/Students/redux/student.reducer';
 import khoa from '../features/khoa/redux/khoa.reducer';
 import monhoc from '../features/mon-hoc/redux/monhoc.reducer';
 import ketqua from '../features/ket-qua/redux/ketqua.reducer';
+import thongke from '../features/thongke/redux/thongke.reducer';
 export const store = configureStore({
   reducer: {
     common,
@@ -11,6 +12,7 @@ export const store = configureStore({
     khoa,
     monhoc,
     ketqua,
+    thongke,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({
     serializableCheck: false

@@ -26,6 +26,11 @@ const ketquaApi = {
   getById: (id: any) => `/api/ketqua/${id}`,
   delete: (id: any) => `/api/ketqua/${id}`,
 };
+
+const thongkeApi = {
+  filterSvxs: '/api/sinhvien/tongket/sv-vip',
+  findSvByMh: '/api/monhoc/sinhvien',
+}
 const publicApi = {
   showFile: (id: any, file: any, type: any) => `${process.env.REACT_APP_MGMT_URL}/api/public/file?file=${file}&id=${id}&type=${type}`,
 };
@@ -34,7 +39,8 @@ const API_ENTRY = {
   public: publicApi,
   khoa: khoaApi,
   monhoc: monhocApi,
-  ketqua: ketquaApi
+  ketqua: ketquaApi,
+  thongke: thongkeApi
 }
 
 export default API_ENTRY;

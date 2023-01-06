@@ -78,8 +78,8 @@ public class SinhVienService {
         List<SinhVienInfo> sinhVienInfos = sinhVienRespository.getSoMonBySinhVien(maSv, diemTB);
         return sinhVienInfos;
     }
-    public List<SinhVienInfo> getSinhVienXuatSac(){
-        List<SinhVienInfo> sinhVienInfos = sinhVienRespository.getSinhVienXuatSac();
+    public List<SinhVienInfo> getSinhVienXuatSac(String makh){
+        List<SinhVienInfo> sinhVienInfos = sinhVienRespository.getSinhVienXuatSac(makh);
         return sinhVienInfos;
     }
 

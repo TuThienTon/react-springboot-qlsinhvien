@@ -10,7 +10,7 @@ import ListMonhoc from "../features/mon-hoc/List-mon-hoc/ListMonhoc";
 import UpdateMonhoc from "../features/mon-hoc/update-mon-hoc/UpdateMonhoc";
 import CreateStudent from "../features/Students/create-student/CreateStudent";
 import ListStudent from "../features/Students/List-Student/ListStudent";
-import ListSvXuatSac from "../features/Students/List-Student/ListSvXuatSac";
+import ListSvXuatSac from "../features/thongke/List-Student-XuatSac/ListSvXuatSac";
 import UpdateStudent from "../features/Students/update-student/UpdateStudent";
 import Layout from "../layout/Layout";
 import { APP_ROUTER_CONST } from "../shared/constants/router/app-router.constant";
@@ -18,6 +18,8 @@ import { KETQUA_ROUTER } from "../shared/constants/router/ketqua-router.constant
 import { KHOA_ROUTER } from "../shared/constants/router/khoa-router.constant";
 import { MONHOC_ROUTER } from "../shared/constants/router/monhoc-router.constant";
 import { STUDENT_ROUTER } from "../shared/constants/router/student-router.constant";
+import { THONGKE_ROUTER } from "../shared/constants/router/thongke-router.constant";
+import ListSvByMh from "../features/thongke/FindSvByMh/ListSvByMh";
 function AppRouter() {
     // const navigate = useNavigate();
     return (
@@ -29,7 +31,7 @@ function AppRouter() {
                     <Route path={STUDENT_ROUTER.childrens.listUser.path} element={<ListStudent />}></Route>
                     <Route path={STUDENT_ROUTER.childrens.createUser.path} element={<CreateStudent />}></Route>
                     <Route path={STUDENT_ROUTER.childrens.updateUser.path} element={<UpdateStudent />}></Route>
-                    <Route path={STUDENT_ROUTER.childrens.listSvXuatSac.path} element={<ListSvXuatSac />}></Route>
+                    
 
                     <Route path={KHOA_ROUTER.childrens.listKhoa.path} element={<Khoa />}></Route>
                     <Route path={KHOA_ROUTER.childrens.createKhoa.path} element={<CreateKhoa />}></Route>
@@ -42,6 +44,9 @@ function AppRouter() {
                     <Route path={KETQUA_ROUTER.childrens.listKetqua.path} element={<ListKetqua />}></Route>
                     <Route path={KETQUA_ROUTER.childrens.createKetqua.path} element={<CreateKetqua />}></Route>
                     <Route path={KETQUA_ROUTER.childrens.updateKetqua.path} element={<UpdateKetqua />}></Route>
+
+                    <Route path={THONGKE_ROUTER.childrens.listSvXuatSac.path} element={<ListSvXuatSac />}></Route>
+                    <Route path={THONGKE_ROUTER.childrens.listSvByMh.path} element={<ListSvByMh />}></Route>
 
 
                 </Route>

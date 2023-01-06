@@ -14,9 +14,6 @@ export const STUDENT_ROUTER = {
       path: '/students/:id',
       buildPath: (id: any) => `/students/${id}`,
     },
-    listSvXuatSac: {
-      path: '/students/sinhvien-xuatsac',
-      roles: [],
-    },
+    
   }
 };

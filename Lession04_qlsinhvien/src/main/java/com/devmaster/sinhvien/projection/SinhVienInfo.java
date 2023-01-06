@@ -3,6 +3,9 @@ package com.devmaster.sinhvien.projection;
 import java.time.LocalDate;
 
 public interface SinhVienInfo {
+
+    String getMaSv();
+
     String getHoSv();
 
     LocalDate getNgaySinh();
@@ -10,6 +13,7 @@ public interface SinhVienInfo {
     String getTenSv();
 
     String getTenMh();
+    String getmaKh();
 
     Double getDiem();
 

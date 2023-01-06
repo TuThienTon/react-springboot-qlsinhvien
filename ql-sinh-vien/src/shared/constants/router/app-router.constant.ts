@@ -2,6 +2,7 @@ import { KETQUA_ROUTER } from "./ketqua-router.constant";
 import { KHOA_ROUTER } from "./khoa-router.constant";
 import { MONHOC_ROUTER } from "./monhoc-router.constant";
 import { STUDENT_ROUTER } from "./student-router.constant";
+import { THONGKE_ROUTER } from "./thongke-router.constant";
 
 export const APP_ROUTER_CONST = {
     layout: {
@@ -16,6 +17,7 @@ export const APP_ROUTER_CONST = {
             khoa: KHOA_ROUTER,
             monhoc: MONHOC_ROUTER,
             ketqua: KETQUA_ROUTER,
+            thongke:THONGKE_ROUTER,
         },
     },
     nonfound: {

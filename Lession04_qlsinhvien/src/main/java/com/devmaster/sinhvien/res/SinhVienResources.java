@@ -72,8 +72,8 @@ public class SinhVienResources {
     }
     // Hiển thị sinh viên xuất sắc có diemTB các môn >= 8
     @GetMapping("/tongket/sv-vip")
-    List<SinhVienInfo> getSinhVienXuatSac(){
-        return sinhVienService.getSinhVienXuatSac();
+    List<SinhVienInfo> getSinhVienXuatSac(@RequestParam("makh") String makh){
+        return sinhVienService.getSinhVienXuatSac(makh);
     }
 
     @GetMapping("findSvByKhoa")
