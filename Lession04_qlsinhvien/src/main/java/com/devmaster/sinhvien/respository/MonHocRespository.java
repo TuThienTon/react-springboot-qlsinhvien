@@ -11,7 +11,10 @@ import java.util.List;
 
 @Repository
 public interface MonHocRespository extends JpaRepository<MonHoc, String> {
-    @Query(value = "select mh from MonHoc mh where mh.tenMh like concat('%',:name,'%') ")
+//    @Query(value = "select mh from MonHoc mh where mh.tenMh like concat('%',:name,'%') or mh.soTiet =  ")
+    @Query(value = " SELECT * FROM qlsinhvien.mon_hoc mh " +
+            " where mh.ten_mh like concat('%',:name,'%') or mh.so_tiet " +
+            " like concat('',:name,'')", nativeQuery = true)
     List<MonHoc> findByName(@Param("name") String name);
 
     @Query(value = "select  mh from MonHoc mh where mh.id = :id")

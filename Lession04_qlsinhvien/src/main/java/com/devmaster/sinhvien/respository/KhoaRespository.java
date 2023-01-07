@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface KhoaRespository extends JpaRepository<Khoa, String> {
 
-    @Query(value = "select k from Khoa k where k.tenKh like concat('%',:name,'%') ")
+    @Query(value = "select k from Khoa k where k.tenKh like concat('%',:name,'%') or k.id like concat('%',:name,'%') ")
     List<Khoa> findByName(@Param("name") String name);
 
 }

@@ -55,7 +55,9 @@ const CreateStudent = () => {
         id: Yup.string().max(3, "Không được quá 3 kí tự").nullable().required(msgErrorRequired("Mã sinh viên")),
         hoSv: Yup.string().nullable().required(msgErrorRequired("Họ sinh viên")),
         tenSv: Yup.string().nullable().required(msgErrorRequired("Tên sinh viên")),
-        ngaySinh: Yup.date().nullable().required(msgErrorRequired("Ngày sinh")),
+        ngaySinh: Yup.date()
+        .required(msgErrorRequired("Ngày sinh"))
+        .max(new Date(), "Không được chọn ngày tương lai"),
         noiSinh: Yup.string().nullable().required(msgErrorRequired("Nơi sinh")),
         maKh: Yup.string().nullable().required(msgErrorRequired("Khoa")),
     });

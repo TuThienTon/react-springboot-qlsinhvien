@@ -51,6 +51,7 @@ const CreateKetqua = () => {
         // maSv: Yup.string().nullable().required(msgErrorRequired("Mã sinh viên")),
         // maMh: Yup.string().nullable().required(msgErrorRequired("Mã môn học")),
         // diem: Yup.number().nullable().required(msgErrorRequired("Điểm")),
+        
     });
     const handleSubmit = async (values: any, formik: any) => {
         const res = await dispatch(createKetquaAsync(values));

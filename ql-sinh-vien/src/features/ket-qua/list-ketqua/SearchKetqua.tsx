@@ -28,8 +28,8 @@ const SearchKetqua = () => {
         formik.resetForm();
         dispatch(
             searchKetquaEntitiesAsync({
-                svKey: "",
-                mhKey: "",
+                masv: "",
+                mamh: "",
             })
         );
     };
