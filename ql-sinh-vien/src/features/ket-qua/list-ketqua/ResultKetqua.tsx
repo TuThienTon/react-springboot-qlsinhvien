@@ -71,8 +71,8 @@ const ResultKetqua = () => {
                                                         sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                                                     >
                                                         <TableCell>{index + 1}</TableCell>
-                                                        <TableCell>{row.ma_sv.id}</TableCell>
-                                                        <TableCell>{row.ma_mh.id}</TableCell>
+                                                        <TableCell>{row.ma_sv.hoSv} {row.ma_sv.tenSv}</TableCell>
+                                                        <TableCell>{row.ma_mh.tenMh}</TableCell>
                                                         <TableCell>{row.diem}</TableCell>
                                                         <TableCell>
                                                             <Button

@@ -8,7 +8,8 @@ const ListStudent = () => {
     const dispatch = useAppDispatch();
     useEffect(() => {
         dispatch(searchStudentEntitiesAsync({
-            name: ''
+            name: '',
+            makh: ''
         }));
     }, [])
     return (

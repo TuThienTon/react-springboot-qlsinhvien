@@ -64,8 +64,8 @@ public class SinhVienService {
         sinhVienRespository.deleteById(id);
     }
 
-    public List<SinhVienDTO> findAllByTenSv(String name) {
-        List<SinhVien> sinhVien = sinhVienRespository.findAllByTenSv(name);
+    public List<SinhVienDTO> findAllByTenSv(String name, String makh) {
+        List<SinhVien> sinhVien = sinhVienRespository.findAllByTenSv(name, makh);
         List<SinhVienDTO> sinhVienDTO = sinhVienMapper.toDo(sinhVien);
         return sinhVienDTO;
     }

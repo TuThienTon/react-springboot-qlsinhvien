@@ -88,12 +88,12 @@ const SearchKetqua = () => {
                             </Grid>
                             <Grid item sm={6}>
                                 <TextFieldContainer
-                                    variant="select"
+                                    variant="input"
                                     type="text"
                                     label="Sinh viên"
                                     name="svKey"
-                                    values={sinhvien}
-                                    options={dataSv}
+                                    // values={sinhvien}
+                                    // options={dataSv}
                                     isRequired
                                 />
                             </Grid>
