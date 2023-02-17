@@ -10,6 +10,13 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { KETQUA_ROUTER } from "../../../shared/constants/router/ketqua-router.constant";
 import { deleteKetquaEntitiesAsync, searchKetquaEntitiesAsync } from "../redux/ketqua.reducer";
+
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+
 const ResultKetqua = () => {
     const dispatch = useAppDispatch();
 
@@ -28,9 +35,20 @@ const ResultKetqua = () => {
 
     const validationSchema = Yup.object().shape({});
 
-    const handleDelete = async (row: any, formik: any) => {
-        const id = row.id;
-        console.log(id);
+    //Xử lý sự kiện dialog xác nhận xoá
+    const [open, setOpen] = React.useState(false);
+    const [dialogId, setDialogId] = React.useState(null);
+    const handleClickOpen = (row: any) => {
+        setDialogId(row.id);
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    const handleDelete = async () => {
+        const id = dialogId;
 
         const res = await dispatch(deleteKetquaEntitiesAsync(id));
 
@@ -43,6 +61,7 @@ const ResultKetqua = () => {
                 })
             );
         } else toast.error("Xóa không thành công");
+        setOpen(false);
     };
 
     return (
@@ -71,7 +90,9 @@ const ResultKetqua = () => {
                                                         sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                                                     >
                                                         <TableCell>{index + 1}</TableCell>
-                                                        <TableCell>{row.ma_sv.hoSv} {row.ma_sv.tenSv}</TableCell>
+                                                        <TableCell>
+                                                            {row.ma_sv.hoSv} {row.ma_sv.tenSv}
+                                                        </TableCell>
                                                         <TableCell>{row.ma_mh.tenMh}</TableCell>
                                                         <TableCell>{row.diem}</TableCell>
                                                         <TableCell>
@@ -88,12 +109,31 @@ const ResultKetqua = () => {
                                                             <Button
                                                                 variant="outlined"
                                                                 size="small"
-                                                                onClick={() => {
-                                                                    handleDelete(row, formik);
-                                                                }}
+                                                                onClick={() => handleClickOpen(row)}
                                                             >
                                                                 Delete
                                                             </Button>
+                                                            <Dialog
+                                                                open={open}
+                                                                onClose={handleClose}
+                                                                aria-labelledby="alert-dialog-title"
+                                                                aria-describedby="alert-dialog-description"
+                                                            >
+                                                                <DialogTitle id="alert-dialog-title">
+                                                                    {"Xác nhận xoá?"}
+                                                                </DialogTitle>
+                                                                <DialogContent>
+                                                                    <DialogContentText id="alert-dialog-description">
+                                                                        Bạn có muốn xoá sinh viên có mã: <b>{dialogId}</b> không?
+                                                                    </DialogContentText>
+                                                                </DialogContent>
+                                                                <DialogActions>
+                                                                    <Button onClick={handleClose}>No</Button>
+                                                                    <Button onClick={handleDelete} autoFocus>
+                                                                        Yes
+                                                                    </Button>
+                                                                </DialogActions>
+                                                            </Dialog>
                                                         </TableCell>
                                                     </TableRow>
                                                 ))}

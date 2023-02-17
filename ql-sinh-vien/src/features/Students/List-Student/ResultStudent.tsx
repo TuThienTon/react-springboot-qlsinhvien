@@ -34,10 +34,11 @@ const ResultStudent = () => {
 
     const validationSchema = Yup.object().shape({});
 
+    //Xử lý sự kiện dialog xác nhận xoá
     const [open, setOpen] = React.useState(false);
-    const [editId, setEditId] = React.useState(null);
+    const [dialogId, setDialogId] = React.useState(null);
     const handleClickOpen = (row: any) => {
-        setEditId(row.id);
+        setDialogId(row.id);
         setOpen(true);
     };
 
@@ -45,7 +46,7 @@ const ResultStudent = () => {
         setOpen(false);
     };
     const handleDelete = async () => {
-        const id = editId;
+        const id = dialogId;
 
         const res = await dispatch(deleteStudentEntitiesAsync(id));
 
@@ -129,7 +130,7 @@ const ResultStudent = () => {
                                                                 </DialogTitle>
                                                                 <DialogContent>
                                                                     <DialogContentText id="alert-dialog-description">
-                                                                        Bạn có muốn xoá sinh viên có mã: <b>{editId}</b> không?
+                                                                        Bạn có muốn xoá sinh viên có mã: <b>{dialogId}</b> không?
                                                                     </DialogContentText>
                                                                 </DialogContent>
                                                                 <DialogActions>

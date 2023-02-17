@@ -9,6 +9,11 @@ import { isFulfilledAction } from "../../../shared/utils/reducer.utils";
 import { toast } from "react-toastify";
 import { deleteKhoaEntitiesAsync, searchKhoaEntitiesAsync } from "../redux/khoa.reducer";
 import * as Yup from "yup";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
 import { KHOA_ROUTER } from "../../../shared/constants/router/khoa-router.constant";
 
 const ResultKhoa = () => {
@@ -24,13 +29,25 @@ const ResultKhoa = () => {
 
     const validationSchema = Yup.object().shape({});
 
+    //Xử lý sự kiện dialog xác nhận xoá
+    const [open, setOpen] = React.useState(false);
+    const [dialogId, setDialogId] = React.useState(null);
+    const handleClickOpen = (row: any) => {
+        setDialogId(row.id);
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
     const handleUpdate = async (row: any) => {
         navigate(KHOA_ROUTER.childrens.updateKhoa.buildPath(row.id));
         console.log(row, row.id);
     };
 
-    const handleDelete = async (row: any, formik: any) => {
-        const id = row.id;
+    const handleDelete = async () => {
+        const id = dialogId;
         // console.log(id);
 
         const res = await dispatch(deleteKhoaEntitiesAsync(id));
@@ -40,6 +57,7 @@ const ResultKhoa = () => {
 
             toast.success("Xóa thành công");
         } else toast.error("Xóa không thành công");
+        setOpen(false);
     };
 
     return (
@@ -83,12 +101,31 @@ const ResultKhoa = () => {
                                                             <Button
                                                                 variant="outlined"
                                                                 size="small"
-                                                                onClick={() => {
-                                                                    handleDelete(row, formik);
-                                                                }}
+                                                                onClick={() => handleClickOpen(row)}
                                                             >
                                                                 Delete
                                                             </Button>
+                                                            <Dialog
+                                                                open={open}
+                                                                onClose={handleClose}
+                                                                aria-labelledby="alert-dialog-title"
+                                                                aria-describedby="alert-dialog-description"
+                                                            >
+                                                                <DialogTitle id="alert-dialog-title">
+                                                                    {"Xác nhận xoá?"}
+                                                                </DialogTitle>
+                                                                <DialogContent>
+                                                                    <DialogContentText id="alert-dialog-description">
+                                                                        Bạn có muốn xoá sinh viên có mã: <b>{dialogId}</b> không?
+                                                                    </DialogContentText>
+                                                                </DialogContent>
+                                                                <DialogActions>
+                                                                    <Button onClick={handleClose}>No</Button>
+                                                                    <Button onClick={handleDelete} autoFocus>
+                                                                        Yes
+                                                                    </Button>
+                                                                </DialogActions>
+                                                            </Dialog>
                                                         </TableCell>
                                                     </TableRow>
                                                 ))}
